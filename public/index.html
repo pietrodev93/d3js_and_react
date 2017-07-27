@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>React App</title>
+</head>
+<body>
+<div id="root"></div>
+
+<div id="grafici"></div>
+<script>
+  let dataset = [15, 21, 14, 8, 12];
+
+  var w = 1000;
+  var h = 100;
+
+  var svg = d3.select("#grafici").append("svg");
+
+  svg.attr("width", w).attr("height", h);
+
+  svg.selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("x", function(d, i){
+        return i * 110 ;
+      })
+      .attr("y", function(d){
+        return h - (d*4);
+      })
+      .attr("width", 100)
+      .attr("height", function(d){
+        return d * 4;
+      })
+      .attr("fill", function(d){
+        return "rgb("+ (d*10) +", 0, 0)";
+      });
+
+      $("button").click(function(){
+        dataset.push(number.value);
+      })
+</script>
+</body>
+</html>
